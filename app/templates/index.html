@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4 d-flex justify-content-center">
+  <div style="max-width: 500px; width: 100%;">
+    <h2 class="text-center">Klasifikasi Kanker Payudara</h2>
+    <p>Masukkan citramu disini:</p>
+    <form class="form-horizontal p-4 border rounded shadow-sm" action="/predict" method="post" enctype="multipart/form-data" style="background-color: #f8f9fa;">
+      <div class="form-group">
+        <div class="col-sm-12">
+          <input type="file" class="form-control" name="my_image" id="my_image" style="border-radius: 8px;">
+        </div>
+      </div>
+      <div class="form-group mt-4">
+        <div class="col-sm-12">
+          <button type="submit" class="btn btn-success btn-lg w-100" style="border-radius: 8px;">Identifikasi</button>
+        </div>
+      </div>
+    </form>
+
+    {% if prediction %}
+    <p class="mt-5">Hasil prediksi:</p>
+    <div class="p-4 border rounded shadow-sm" style="background-color: #f8f9fa;">
+      <h3 class="mb-3 text-center"><i>Cancer {{ prediction }}</i></h3>
+      <div class="d-flex justify-content-center">
+        <img src="{{ img_path }}" class="img-fluid border rounded" style="max-height: 400px; max-width: 100%;">
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}
