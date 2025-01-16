@@ -1,0 +1,3 @@
+app/denseNet_HP.h5
+model/*
+.venv
